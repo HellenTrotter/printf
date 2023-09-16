@@ -7,7 +7,7 @@
 /**
 *_printf- produces output according to a format
 *@format :string of characters
-*Return : return the number of characters printed excluding null
+*Return: return number of characters printed
 */
 
 int _printf(const char *format, ...)
@@ -38,7 +38,7 @@ else if (format[i] == 's')
 {
 s = va_arg(my_arguments, char *);
 fputs(s, stdout);
-count_mychar = strlen(s);
+count_mychar += strlen(s);
 }
 
 }
