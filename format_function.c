@@ -20,11 +20,6 @@ int count_mychar = 0;
 va_start(my_arguments, format);
 for (i = 0; (format[i] != '\0'); i++)
 {
-if (format[i] != '%')
-{
-putchar(format[i]);
-count_mychar = strlen(format);
-}
 if (format[i] == '%')
 {
 i++;
@@ -40,7 +35,12 @@ s = va_arg(my_arguments, char *);
 fputs(s, stdout);
 count_mychar += strlen(s);
 }
-
+}
+else
+{
+putchar(format[i]);
+count_mychar = strlen(format);
+}
 }
 va_end(my_arguments);
 return (count_mychar);
