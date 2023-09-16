@@ -25,7 +25,7 @@ if (format[i] != '%')
 putchar(format[i]);
 count_mychar = strlen(format);
 }
-else
+if (format[i] == '%')
 {
 i++;
 if (format[i] == 'c')
@@ -39,7 +39,6 @@ else if (format[i] == 's')
 s = va_arg(my_arguments, char *);
 fputs(s, stdout);
 count_mychar = strlen(s);
-}
 }
 
 }
