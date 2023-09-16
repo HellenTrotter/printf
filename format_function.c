@@ -7,7 +7,7 @@
 /**
 *_printf- produces output according to a format
 *@format :string of characters
-*Return :number of characters printed excluding the null
+*Return : return the number of characters printed excluding null
 */
 
 int _printf(const char *format, ...)
