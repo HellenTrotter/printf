@@ -44,7 +44,7 @@ count_mychar += strlen(s);
 }
 else
 {
-write(1,"(null)",6);
+write(1, "(null)", 6);
 count_mychar += 6;
 }
 }
