@@ -20,6 +20,8 @@ if (format == NULL)
 {
 return (-1);
 }
+else
+{
 for (i = 0; (format[i] != '\0'); i++)
 {
 if (format[i] == '%')
@@ -52,6 +54,7 @@ else
 {
 write(1, &format[i], 1);
 count_mychar++;
+}
 }
 }
 va_end(my_arguments);
