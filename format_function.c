@@ -18,10 +18,10 @@ int count_mychar = 0;
 va_start(my_arguments, format);
 if (format == NULL)
 {
+va_end(my_arguments);
 return (-1);
 }
-else
-{
+
 for (i = 0; (format[i] != '\0'); i++)
 {
 if (format[i] == '%')
@@ -30,7 +30,7 @@ i++;
 if (format[i] == 'c')
 {
 int c = va_arg(my_arguments, int);
-char ch = c;
+char ch = (char)c;
 write(1, &ch, 1);
 count_mychar++;
 }
@@ -56,7 +56,7 @@ write(1, &format[i], 1);
 count_mychar++;
 }
 }
-}
+
 va_end(my_arguments);
 return (count_mychar);
 }
