@@ -16,7 +16,7 @@ int i;
 char *s;
 int count_mychar = 0;
 va_start(my_arguments, format);
-if (format == NULL || (strcmp(format, "%")== 0 && format[1] == '\0'))
+if (format == NULL || (strcmp(format, "%") == 0 && format[1] == '\0'))
 {
 va_end(my_arguments);
 return (-1);
