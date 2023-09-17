@@ -36,7 +36,7 @@ count_mychar++;
 else if (format[i] == 's')
 {
 s = va_arg(my_arguments, char *);
-write(1, s, strlen(s));
+fputs(s, stdout);
 count_mychar += strlen(s);
 }
 else if (format[i] == '%')
