@@ -7,7 +7,7 @@
 /**
 *_printf- produces output according to a format
 *@format :string of characters
-*Return :number of characters printed excluding the null
+*Return: return number of characters printed
 */
 
 int _printf(const char *format, ...)
@@ -20,12 +20,7 @@ int count_mychar = 0;
 va_start(my_arguments, format);
 for (i = 0; (format[i] != '\0'); i++)
 {
-if (format[i] != '%')
-{
-putchar(format[i]);
-count_mychar = strlen(format);
-}
-else
+if (format[i] == '%')
 {
 i++;
 if (format[i] == 'c')
@@ -38,10 +33,19 @@ else if (format[i] == 's')
 {
 s = va_arg(my_arguments, char *);
 fputs(s, stdout);
-count_mychar = strlen(s);
+count_mychar += strlen(s);
+}
+else if (format[i] == '%')
+{
+putchar('%');
+count_mychar++;
 }
 }
-
+else
+{
+putchar(format[i]);
+count_mychar ++;
+}
 }
 va_end(my_arguments);
 return (count_mychar);
