@@ -44,7 +44,7 @@ count_mychar++;
 else
 {
 putchar(format[i]);
-count_mychar ++;
+count_mychar++;
 }
 }
 va_end(my_arguments);
