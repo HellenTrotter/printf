@@ -18,6 +18,8 @@ char *s;
 int count_mychar = 0;
 
 va_start(my_arguments, format);
+if (format != NULL)
+{
 for (i = 0; (format[i] != '\0'); i++)
 {
 if (format[i] == '%')
@@ -47,6 +49,11 @@ putchar(format[i]);
 count_mychar++;
 }
 }
+
+}
+else
+return (-1);
+
 va_end(my_arguments);
 return (count_mychar);
 }
