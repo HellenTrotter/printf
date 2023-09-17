@@ -3,22 +3,24 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include "main.h"
-
 /**
 *_printf- produces output according to a format
 *@format :string of characters
 *Return: return number of characters printed
 */
-
+int _printf(const char *format, ...);
 int _printf(const char *format, ...)
 {
 va_list my_arguments;
 int i;
 char *s;
 int count_mychar = 0;
-
 va_start(my_arguments, format);
-if (format != NULL)
+if (format == NULL)
+{
+return (-1);
+}
+else
 {
 for (i = 0; (format[i] != '\0'); i++)
 {
@@ -49,11 +51,7 @@ putchar(format[i]);
 count_mychar++;
 }
 }
-
 }
-else
-return (-1);
-
 va_end(my_arguments);
 return (count_mychar);
 }
