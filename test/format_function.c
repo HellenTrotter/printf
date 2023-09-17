@@ -16,7 +16,7 @@ int i;
 char *s;
 int count_mychar = 0;
 va_start(my_arguments, format);
-if (format == NULL)
+if (format == NULL || (strcmp(format, "%")== 0 && format[1] == '\0'))
 {
 va_end(my_arguments);
 return (-1);
@@ -44,7 +44,7 @@ count_mychar += strlen(s);
 }
 else
 {
-write(1,"(null)",6);
+write(1, "(null)", 6);
 count_mychar += 6;
 }
 }
@@ -54,6 +54,16 @@ char symbol = '%';
 write(1, &symbol, 1);
 count_mychar++;
 }
+/*else if (format[i] == 'c' && format[i+1]== 's')
+{
+i++;
+int sc;
+sc = va_arg(my_arguments, int);
+char *sc_ptr = (char*)&sc; 
+
+write(1, sc_ptr, sizeof(int));
+count_mychar += sizeof(int);
+}*/
 else if (format[i] == ' ')
 {
 va_end(my_arguments);
