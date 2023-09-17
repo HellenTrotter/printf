@@ -42,12 +42,22 @@ if (s != NULL)
 write(1, s, strlen(s));
 count_mychar += strlen(s);
 }
+else
+{
+write(1,"(null)",6);
+count_mychar += 6;
+}
 }
 else if (format[i] == '%')
 {
 char symbol = '%';
 write(1, &symbol, 1);
 count_mychar++;
+}
+else if (format[i] == ' ')
+{
+va_end(my_arguments);
+return (-1);
 }
 }
 else
@@ -56,6 +66,7 @@ write(1, &format[i], 1);
 count_mychar++;
 }
 }
+
 
 va_end(my_arguments);
 return (count_mychar);

@@ -10,7 +10,12 @@
  */
 int main(void)
 {
-_printf("Let's try to printf a simple sentence.\n");
+_printf("%");
+_printf("% ");
+_printf(NULL);
+_printf("%\0");
+_printf("%s",NULL);
+/**_printf("Let's try to printf a simple sentence.\n");
 printf("Let's try to printf a simple sentence.\n");
 _printf("empty Character:[%c]\n", ' ');
 printf("empty Character:[%c]\n", ' ');
@@ -33,5 +38,6 @@ printf("String:[%s]\n", "I am a string !");
 _printf("String:[%s%s]\n", "I am a string !", "second string !");
 _printf("String:[%s%s]\n", "I am a string !", "second string !");
 printf("String:[%s %s]\n", "I am a string !", "second string !");
+*/
 return (0);
 }
