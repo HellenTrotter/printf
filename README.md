@@ -1,5 +1,9 @@
 0x11. C - printf
 
+This is a group project done by Hellen Trotter and Samantha Khupe.
+
+In this project we were taksed with the following:
+
 0. Write a function that produces output according to a format.
 
 Prototype: int _printf(const char *format, ...);
@@ -63,6 +67,8 @@ Conversion specifiers to handle: d, i, u, o, x, X
 
 12. Handle the - flag character for non-custom conversion specifiers.
 
+12. Handle the - flag character for non-custom conversion specifiers.
+
 13. Handle the following custom conversion specifier:
 
 r : prints the reversed string
@@ -72,3 +78,4 @@ r : prints the reversed string
 R: prints the rot13'ed string
 
 15. All the above options work well together.
+                   
