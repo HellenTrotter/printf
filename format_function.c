@@ -19,7 +19,7 @@ const char invalid_char[] = "abghjkmnqrtvwyz";
 char specifi = '\0';
 
 va_start(my_arguments, format);
-if (format == NULL || format == '\0')
+if (format == NULL)
 {
 va_end(my_arguments);
 return (-1);
