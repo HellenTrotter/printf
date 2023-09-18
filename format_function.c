@@ -1,6 +1,5 @@
-#include <stdio.h>
-#include <string.h>
 #include <unistd.h>
+#include <string.h>
 #include <stdarg.h>
 #include "main.h"
 /**
@@ -50,13 +49,13 @@ write(1, "(null)", 6);
 count_mychar += 6;
 }
 }
-else if(format[i] == '%')
+else if (format[i] == '%')
 {
 char symbol = '%';
 write(1, &symbol, 1);
 count_mychar++;
 }
-else if(strchr(invalid_chars, format[i]) != NULL)
+else if (strchr(invalid_chars, format[i]) != NULL)
 {
 va_end(my_arguments);
 return (-1);
