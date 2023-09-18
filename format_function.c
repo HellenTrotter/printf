@@ -76,6 +76,10 @@ else if (format[i] == ' ')
 va_end(my_arguments);
 return (-1);
 }
+else if (format[i] == '\0')
+{
+va_end(my_arguments);
+return (-1);
 }
 else
 {
