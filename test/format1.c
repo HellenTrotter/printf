@@ -19,7 +19,13 @@ const char invalid_char[] = "abghjkmnqrtvwyz";
 char specifi = '\0';
 
 va_start(my_arguments, format);
-if (format == NULL || (strcmp(format, "%") == 0 && format[1] == '\0'))
+if (format == NULL )
+{
+va_end(my_arguments);
+return (-1);
+}
+
+if((strcmp(format, "%") == 0 && format[1] == '\0'))
 {
 va_end(my_arguments);
 return (-1);
@@ -50,6 +56,11 @@ else
 write(1, "(null)", 6);
 count_mychar += 6;
 }
+}
+else if (format[i] == '\0')
+{
+va_end(my_arguments);
+return (-1);
 }
 else if (strchr(invalid_char, format[i]) != NULL)
 {
@@ -90,7 +101,6 @@ write(1, &format[i], 1);
 count_mychar++;
 }
 }
-
 va_end(my_arguments);
 return (count_mychar);
 }
