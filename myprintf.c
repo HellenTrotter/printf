@@ -1,7 +1,3 @@
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
-#include <stdarg.h>
 #include "main.h"
 /**
 *_printf- produces output according to a format
