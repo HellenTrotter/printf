@@ -15,6 +15,7 @@ va_list my_arguments;
 int i;
 char *s;
 int count_mychar = 0;
+
 va_start(my_arguments, format);
 if (format == NULL || (strcmp(format, "%") == 0 && format[1] == '\0'))
 {
@@ -27,14 +28,17 @@ for (i = 0; (format[i] != '\0'); i++)
 if (format[i] == '%')
 {
 i++;
-if (format[i] == 'c')
+switch (format[i])
+{
+case 'c':
 {
 int c = va_arg(my_arguments, int);
 char ch = (char)c;
 write(1, &ch, 1);
 count_mychar++;
+break;
 }
-else if (format[i] == 's')
+case 's':
 {
 s = va_arg(my_arguments, char *);
 if (s != NULL)
@@ -47,15 +51,16 @@ else
 write(1, "(null)", 6);
 count_mychar += 6;
 }
+break;
 }
-else if (format[i] == '%')
+case'%':
 {
 char symbol = '%';
 write(1, &symbol, 1);
 count_mychar++;
+break;
 }
-else if (format[i] == ' ')
-{
+default:
 va_end(my_arguments);
 return (-1);
 }
