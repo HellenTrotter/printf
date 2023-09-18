@@ -64,7 +64,14 @@ write(1, &invalid_chars, 1);
 count_mychar++;
 }
 }
-
+else if(format[i] == 'd' || format[i] == 'i')
+{
+int d = va_arg(my_arguments, int);
+char buffer[12];
+sprintf(buffer, "%d", d);
+write(1,buffer ,strlen(buffer));
+count_mychar +=strlen(buffer);
+}
 else if (format[i] == '%')
 {
 char symbol = '%';

@@ -1,5 +1,6 @@
-#include <unistd.h>
+#include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 #include <stdarg.h>
 #include "main.h"
 /**
@@ -14,7 +15,7 @@ va_list my_arguments;
 int i;
 char *s;
 int count_mychar = 0;
-const char invalid_chars[] = "abghjkmnqrtvwyz";
+const char invalid_char[] = "abghjkmnqrtvwyz";
 char specifi = '\0';
 
 va_start(my_arguments, format);
@@ -50,15 +51,8 @@ write(1, "(null)", 6);
 count_mychar += 6;
 }
 }
-else if (format[i] == '%')
+else if (strchr(invalid_char, format[i]) != NULL)
 {
-char symbol = '%';
-write(1, &symbol, 1);
-count_mychar++;
-}
-else if (strchr(invalid_chars, format[i]) != NULL)
-{
-
 char invalid_chars = format[i];
 specifi = format[i - 1];
 if (specifi != '\0')
@@ -66,11 +60,26 @@ if (specifi != '\0')
 write(1, &specifi, 1);
 count_mychar++;
 specifi = '\0';
-
 write(1, &invalid_chars, 1);
 count_mychar++;
 }
 }
+
+else if (format[i] == '%')
+{
+char symbol = '%';
+write(1, &symbol, 1);
+count_mychar++;
+}
+else if (format[i] == ' ')
+{
+va_end(my_arguments);
+return (-1);
+}
+else if (format[i] == '\0')
+{
+va_end(my_arguments);
+return (-1);
 }
 else
 {
@@ -78,7 +87,8 @@ write(1, &format[i], 1);
 count_mychar++;
 }
 }
-
+}
 va_end(my_arguments);
 return (count_mychar);
 }
+
