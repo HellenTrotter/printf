@@ -2,7 +2,7 @@
 
 This is a group project done by Hellen Trotter and Samantha Khupe.
 
-In this project we were taksed with the following:
+In this project we were tasked with the following:
 
 0. Write a function that produces output according to a format.
 
