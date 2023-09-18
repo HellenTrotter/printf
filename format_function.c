@@ -15,6 +15,7 @@ int i;
 char *s;
 int count_mychar = 0;
 const char invalid_chars[] = "abghjkmnqrtvwyz";
+char specifi = '\0';
 
 va_start(my_arguments, format);
 if (format == NULL || (strcmp(format, "%") == 0 && format[1] == '\0'))
@@ -57,8 +58,18 @@ count_mychar++;
 }
 else if (strchr(invalid_chars, format[i]) != NULL)
 {
-va_end(my_arguments);
-return (-1);
+
+char invalid_chars = format[i];
+specifi = format[i - 1];
+if (specifi != '\0')
+{
+write(1, &specifi, 1);
+count_mychar++;
+specifi = '\0';
+
+write(1, &invalid_chars, 1);
+count_mychar++;
+}
 }
 }
 else
@@ -67,7 +78,6 @@ write(1, &format[i], 1);
 count_mychar++;
 }
 }
-
 
 va_end(my_arguments);
 return (count_mychar);
