@@ -24,12 +24,20 @@ if (format == NULL )
 va_end(my_arguments);
 return (-1);
 }
-
-if((strcmp(format, "%") == 0 && format[1] == '\0'))
+if (!format ||(format[0] == '%' && !format[1]))
+{
+return (-1);
+}
+if (format[0] == '%' && format[1] == ' ')
+{
+ return (-1);
+}
+/*if((strcmp(format, "%") == 0 && format[1] == '\0'))
 {
 va_end(my_arguments);
 return (-1);
 }
+*/
 
 for (i = 0; (format[i] != '\0'); i++)
 {
