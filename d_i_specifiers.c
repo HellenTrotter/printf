@@ -11,7 +11,7 @@ int my_printf(const char *format, ...)
 	const char *s = format;
 	int i;
 	int k;
-        char str[12];
+	char str[12];
 
 	va_list arg;
 
@@ -35,8 +35,8 @@ int my_printf(const char *format, ...)
 				{
 					str[k++] = '0';
 				}
-				else {
-
+				else
+				{
 				if (j < 0)
 				{
 					str[k++] = '-';
@@ -45,20 +45,19 @@ int my_printf(const char *format, ...)
 
 				while (j > 0)
 				{
-					str[k++] = '0' + (j %10);
+					str[k++] = '0' + (j % 10);
 					j /= 10;
 				}
 				}
 
 				str[k] = '\0';
-				
 				for (i = 0; i < k / 2; i++)
 				{
 					char tmp = str[i];
+
 					str[i] = str[k - 1 - i];
 					str[k - 1 - i] = tmp;
 				}
-				
 				write(1, str, k);
 				s++;
 			}
