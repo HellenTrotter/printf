@@ -1,7 +1,7 @@
 #include "main.h"
 #include <stdarg.h>
 /**
- * _printf - produces output according to a format.
+ * my_printf - produces output according to a format.
  * @format: is a character string
  * Return: number of characters
  */
@@ -11,7 +11,7 @@ int my_printf(const char *format, ...)
 	const char *s = format;
 	int i;
 	int k;
-        char str[12];
+	char str[12];
 
 	va_list arg;
 
@@ -30,12 +30,13 @@ int my_printf(const char *format, ...)
 			if (*s == 'd' || *s == 'i')
 			{
 				int j = va_arg(arg, int);
-				
+
 				if (j == 0)
 				{
 					str[k++] = '0';
 				}
-				else {
+				else
+				{
 
 				if (j < 0)
 				{
@@ -45,20 +46,21 @@ int my_printf(const char *format, ...)
 
 				while (j > 0)
 				{
-					str[k++] = '0' + (j %10);
+					str[k++] = '0' + (j % 10);
 					j /= 10;
 				}
 				}
 
 				str[k] = '\0';
-				
+
 				for (i = 0; i < k / 2; i++)
 				{
 					char tmp = str[i];
+
 					str[i] = str[k - 1 - i];
 					str[k - 1 - i] = tmp;
 				}
-				
+
 				write(1, str, k);
 				s++;
 			}
