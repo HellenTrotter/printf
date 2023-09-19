@@ -23,7 +23,7 @@ printf("Len:[%d]\n", num1);
 printf("Len1:[%d]\n\n", num2);
 
 num1 = _printf("A simple %v entence\n");
-num2 = printf("A simple %v entence\n");
+/*num2 = printf("A simple %v entence\n");*/
 printf("Len:[%d]\n", num1);
 printf("Len1:[%d]\n\n", num2);
 
@@ -31,6 +31,15 @@ num1 = _printf("Percentage: %%\n");
 num2 = printf("Percentage: %%\n");
 _printf("Len:[%d]\n", num1);
 printf("Len1:[%d]\n\n", num2);
+num1 = _printf("%%%%%%%%\n");
+num2 = printf("%%%%%%%%\n");
+_printf("Len1:[%d]\n\n", num1);
+printf("Len1:[%d]\n\n", num2);
+_printf("%c\n:", 48);
+num1 = _printf("Unknown:[%r]\n");
+_printf("Len1:[%d]\n\n", num1);
+_printf("%c", '\0');
+_printf("%!\n");
 return 0;
 
 }

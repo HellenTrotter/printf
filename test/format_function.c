@@ -15,23 +15,23 @@ va_list my_arguments;
 int i;
 char *s;
 int count_mychar = 0;
-const char invalid_char[] = "abghjkmnqrtvwyz";
+const char invalid_char[] = "abghjkmnqrtvwyz!";
 char specifi = '\0';
-
 va_start(my_arguments, format);
 if (format == NULL)
 {
-va_end(my_arguments);
 return (-1);
 }
-
-if ((strcmp(format, "%") == 0 && format[1] == '\0'))
+if (!format || (format[0] == '%' && !format[1]))
 {
-va_end(my_arguments);
+{
 return (-1);
 }
-
-
+if (format[0] == '%' && format[1] == ' ')
+{
+return (-1);
+}
+}
 for (i = 0; (format[i] != '\0'); i++)
 {
 if (format[i] == '%')
@@ -53,11 +53,9 @@ size_t len;
 size_t maxChunkSize;
 size_t chunkSize;
 size_t j;
-
 len = strlen(s);
 maxChunkSize = 50;
 chunkSize = (len < maxChunkSize) ? len : maxChunkSize;
-
 for (j = 0; j < len; j += chunkSize)
 {
 size_t remaining;
@@ -73,11 +71,6 @@ else
 write(1, "(null)", 6);
 count_mychar += 6;
 }
-}
-else if (format[i] == '\0')
-{
-va_end(my_arguments);
-return (-1);
 }
 else if (strchr(invalid_char, format[i]) != NULL)
 {
@@ -108,7 +101,6 @@ count_mychar++;
 }
 else if (format[i] == ' ')
 {
-va_end(my_arguments);
 return (-1);
 }
 }
@@ -121,4 +113,3 @@ count_mychar++;
 va_end(my_arguments);
 return (count_mychar);
 }
-

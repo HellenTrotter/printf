@@ -15,29 +15,23 @@ va_list my_arguments;
 int i;
 char *s;
 int count_mychar = 0;
-const char invalid_char[] = "abghjkmnqrtvwyz!";
+const char invalid_char[] = "abghjkmnqrtvwyz";
 char specifi = '\0';
 
 va_start(my_arguments, format);
-if (format == NULL )
+if (format == NULL)
 {
 va_end(my_arguments);
 return (-1);
 }
-if (!format ||(format[0] == '%' && !format[1]))
+if (!format || (format[0] == '%' && !format[1]))
 {
 return (-1);
 }
 if (format[0] == '%' && format[1] == ' ')
 {
- return (-1);
-}
-/*if((strcmp(format, "%") == 0 && format[1] == '\0'))
-{
-va_end(my_arguments);
 return (-1);
 }
-*/
 
 for (i = 0; (format[i] != '\0'); i++)
 {
@@ -75,17 +69,12 @@ write(1, s + j, currentChunkSize);
 count_mychar += currentChunkSize;
 }
 }
+}
 else
 {
 write(1, "(null)", 6);
 count_mychar += 6;
 }
-}
-else if (format[i] == '\0')
-{
-
-va_end(my_arguments);
-return (-1);
 }
 else if (strchr(invalid_char, format[i]) != NULL)
 {
@@ -100,13 +89,21 @@ write(1, &invalid_chars, 1);
 count_mychar++;
 }
 }
-else if(format[i] == 'd' || format[i] == 'i')
+else if (format[i] == '!')
+{
+char newline;
+newline = '\n';
+write(1, &format[i], 1);
+write(1, &newline, 1);
+count_mychar += 2;
+}
+else if (format[i] == 'd' || format[i] == 'i')
 {
 int d = va_arg(my_arguments, int);
 char buffer[12];
 sprintf(buffer, "%d", d);
-write(1,buffer ,strlen(buffer));
-count_mychar +=strlen(buffer);
+write(1, buffer, strlen(buffer));
+count_mychar += strlen(buffer);
 }
 else if (format[i] == '%')
 {
@@ -114,12 +111,7 @@ char symbol = '%';
 write(1, &symbol, 1);
 count_mychar++;
 }
-else if (format[i] == ' ')
-{
-va_end(my_arguments);
-return (-1);
-}
-}
+
 else
 {
 write(1, &format[i], 1);
