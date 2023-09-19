@@ -36,11 +36,11 @@ char ch = (char)c;
 write(1, &ch, 1);
 count_mychar++;
 }
-else if(format[i] == ' ')
+else if (format[i] == ' ')
 {
 return (-1);
 }
-else if (format[i]== '\0')
+else if (format[i] == '\0')
 {
 return (-1);
 }
@@ -52,9 +52,11 @@ if (s != NULL)
 size_t len;
 size_t maxChunkSize;
 size_t chunkSize;
-size_t j;len = strlen(s);
+size_t j;
+len = strlen(s);
 maxChunkSize = 50;
-chunkSize = (len < maxChunkSize) ? len : maxChunkSize;for (j = 0; j < len; j += chunkSize)
+chunkSize = (len < maxChunkSize) ? len : maxChunkSize;
+for (j = 0; j < len; j += chunkSize)
 {
 size_t remaining;
 size_t currentChunkSize;
