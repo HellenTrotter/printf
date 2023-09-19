@@ -15,7 +15,7 @@ va_list my_arguments;
 int i;
 char *s;
 int count_mychar = 0;
-const char invalid_char[] = "abghjkmnqrtvwyz";
+const char invalid_char[] = "abghjkmnqrtvwyz!";
 char specifi = '\0';
 
 va_start(my_arguments, format);
@@ -48,8 +48,24 @@ else if (format[i] == 's')
 s = va_arg(my_arguments, char *);
 if (s != NULL)
 {
-write(1, s, strlen(s));
-count_mychar += strlen(s);
+size_t len;
+size_t maxChunkSize;
+size_t chunkSize;
+size_t j;
+
+len = strlen(s);
+maxChunkSize = 50;
+chunkSize = (len < maxChunkSize) ? len : maxChunkSize;
+
+for (j = 0; j < len; j += chunkSize)
+{
+size_t remaining;
+size_t currentChunkSize;
+remaining = len - j;
+currentChunkSize = (remaining > chunkSize) ? chunkSize : remaining;
+write(1, s + j, currentChunkSize);
+count_mychar += currentChunkSize;
+}
 }
 else
 {
@@ -59,6 +75,7 @@ count_mychar += 6;
 }
 else if (format[i] == '\0')
 {
+
 va_end(my_arguments);
 return (-1);
 }
