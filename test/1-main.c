@@ -10,14 +10,35 @@
  */
 int main(void)
 {
+int my_char = 48; 
+int len;
+int len2;
+(void)len;
+(void)len2;
+
+len = _printf("Let's try to printf a simple sentence.\n");
+len2 = printf("Let's try to printf a simple sentence.\n");
+printf("%d=%d\n", len, len2);
+_printf("%!");
+_printf("%c", '\0');
+_printf(NULL);
+_printf("%d=%d\n", len, len2);
+_printf("Length:[%d, %i]\n", len, len);
+printf("Length:[%d, %i]\n", len2, len2);
+_printf("Len:[%d]\n", len);
+printf("Len:[%d]\n", len2);
 _printf("Percent:[%%]\n");
 printf("Percent:[%%]\n");
 _printf("%");
-_printf("css%ccs%scscscs", 'T', "Test");
+_printf("Unknown:[%r]\n");
+_printf("css%ccs%scscscs\n", 'T', "Test");
 _printf("% ");
 _printf(NULL);
 _printf("%\0");
+_printf("%s", "This sentence is retrieved from var_args!\n");
 _printf("%s",NULL);
+_printf("Hello : %c. How are you?\n", 'K');
+_printf("What is character A in int format %c?\n", my_char);
 _printf("Let's try to printf a simple sentence.\n");
 printf("Let's try to printf a simple sentence.\n");
 _printf("empty Character:[%c]\n", ' ');
