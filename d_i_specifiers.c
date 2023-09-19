@@ -37,10 +37,7 @@ int my_printf(const char *format, ...)
 				}
 				else
 				{
-<<<<<<< HEAD
 
-=======
->>>>>>> 2b120215d1265a846cb2ec0338950e98b4e0d329
 				if (j < 0)
 				{
 					str[k++] = '-';
@@ -55,10 +52,7 @@ int my_printf(const char *format, ...)
 				}
 
 				str[k] = '\0';
-<<<<<<< HEAD
 
-=======
->>>>>>> 2b120215d1265a846cb2ec0338950e98b4e0d329
 				for (i = 0; i < k / 2; i++)
 				{
 					char tmp = str[i];
@@ -66,10 +60,6 @@ int my_printf(const char *format, ...)
 					str[i] = str[k - 1 - i];
 					str[k - 1 - i] = tmp;
 				}
-<<<<<<< HEAD
-
-=======
->>>>>>> 2b120215d1265a846cb2ec0338950e98b4e0d329
 				write(1, str, k);
 				s++;
 			}
