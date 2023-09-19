@@ -5,8 +5,8 @@
  * @format: is a character string
  * Return: number of characters
  */
-int _printf(const char *format, ...);
-int _printf(const char *format, ...)
+int my_printf(const char *format, ...);
+int my_printf(const char *format, ...)
 {
 	const char *s = format;
 	int i;
