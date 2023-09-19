@@ -15,12 +15,11 @@ va_list my_arguments;
 int i;
 char *s;
 int count_mychar = 0;
-const char invalid_char[] = "abghjkmnqrtvwyz!";
+const char invalid_char[] = "abghjkmnqrtvwyz!0123456789}{][";
 char specifi = '\0';
 va_start(my_arguments, format);
 if (format == NULL)
 {
-va_end(my_arguments);
 return (-1);
 }
 
@@ -42,7 +41,7 @@ return (-1);
 }
 else if (format[i] == '\0')
 {
-return (1);
+return (-1);
 }
 else if (format[i] == 's')
 {
